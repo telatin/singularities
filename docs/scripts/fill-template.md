@@ -1,5 +1,6 @@
 ---
 sort: 2
+permalink: /scripts/fill
 ---
 # Generate definition file
 

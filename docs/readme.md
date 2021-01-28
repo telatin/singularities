@@ -18,6 +18,10 @@ This repository contains notes on how to automate the generation of such
 The goal is to provide a **seamless** installation of tools, so we will cover
 notes on how to write appropriate launchers.
 
+```note
+This repository is under development. Feel free to submit an issue if you
+find it difficult to reproduce something.
+```
 
 ## Contents
 
