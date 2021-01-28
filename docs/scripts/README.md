@@ -2,6 +2,6 @@
 sort: 4
 ---
 
-# Tools
+# Scripts and Notes
 
 {% include list.liquid %}
