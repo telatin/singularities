@@ -1,0 +1,122 @@
+#!/usr/bin/env perl
+# USAGE:
+# cron_job -> check all packages for new VERSION
+# cron_job PACKAGE_NAME -> only check for new versions of PACKAGE_NAME
+
+use 5.012;
+use warnings;
+use FindBin qw($RealBin);
+use Term::ANSIColor qw(:constants);
+use Getopt::Long;
+use Data::Dumper;
+my $filter = $ARGV[0];
+
+my $images_dir = '/nbi/software/testing/GMH-Tools/last/x86_64/images';
+my %packages = (
+  'mosdepth'   => 'binary=mosdepth;',
+  'shovill'    => 'binary=shovill;',
+  'checkv'    => 'binary=checkv;',
+  'vibrant'   => 'binary=VIBRANT_run.py;',
+  'das_tool'  => 'binary=DAS_Tool;',
+  'antismash' => 'binary=antismash;',
+  'minia' => '',
+  'bedtools' => '',
+  'samtools' => '',
+  'bwa' => '',
+  'bbmap' => 'binary=bbmap.sh;',
+  'prokka' => '',
+  'kraken2' => '',
+  'metaphlan' => '',
+  'metaphlan2' => '',
+  'unicycler' => '',
+  'megahit' => '',
+  'spades' => 'binary=spades.py;',
+  'maxbin2' => '',
+  'metabat2' => '',
+  'mmseqs2' => '',
+  'eggnog-mapper' => '',
+  'virsorter' => '',
+  'r-virfinder' => '',
+  'megahit' => '',
+  'seqfu' => '',
+  'n50' => '',
+  'multiqc' => '',
+  'covtobed' => '',
+  'rtk' => '',
+  'lca' => '',
+  'sdm' => '',
+  'seqkit' => '',
+  'dadaist2' => '',
+);
+
+
+my $download = 0;
+GetOptions(
+ "--download" => \$download,
+);
+
+for my $package (sort keys %packages) {
+  if (defined $filter and $package !~/$filter/) {
+    say STDERR " - skipping $package";
+    next;
+  }
+  my $version = get_ver($package);
+  my $properties = parsestring($packages{$package});
+  my $binary = $properties->{'binary'} // $package;
+
+  if (! $version ) {
+   say STDERR YELLOW, " * Version not found for $package: skipping", RESET;
+   next;
+  }
+  my $image = "$package~$version";
+  if ( -e "$images_dir/$image" ) {
+   say STDERR YELLOW, " [SKIP] Package $package $version: image found", RESET;
+  } else {
+   say STDERR BOLD, GREEN, " [NEW!] Package $package $version: new image", RESET;
+   if (! $download ) {
+     next;
+   }
+   my $template = (-e "$RealBin/templates/$package.tmp") ? "$RealBin/templates/$package.tmp" : "$RealBin/templates/default.tmp";
+   cmd( qq($RealBin/fill_template.pl $template  package=$package version=$version binary=$binary >  $RealBin/defs/$image.def 2>/dev/null));
+   cmd( qq(sudo singularity build "$images_dir/$image" "$RealBin"/defs/"$image".def 2>&1 > "$images_dir/singularity_build_$image.log"));
+  }
+}
+
+sub parsestring {
+ my $string = shift @_;
+ my %data = ();
+ my @pairs = split /;/, $string;
+ for my $pair (@pairs) {
+   my ($key, $value) = split /=/, $pair;
+   $data{$key} = $value;
+ }
+ return \%data;
+}
+sub msg {
+ my $t = `date +%Y-%m-%d_%H:%S`;
+ chomp($t);
+ my $line = "[".$t."] @_\n";
+ say STDERR $line;
+}
+sub cmd {
+ msg("Running:", @_);
+ system(@_)==0 or err("Could not run command:", @_);
+}
+
+sub err {
+  msg(@_);
+  exit(2);
+}
+sub get_ver {
+ my $package = shift @_;
+ my $version = `$RealBin/last_version.pl "$package"`;
+ if ($?) {
+  die " Unable to use <last_version.pl> to detect <$package> last version.\n"
+ }
+ chomp($version);
+ if ($version) {
+  return $version;
+ } else {
+  return 0;
+ }
+} 

@@ -1,0 +1,33 @@
+BootStrap: yum
+OSVersion: 7
+MirrorURL: http://yum-repos.hpccluster/centos/7/os/$basearch/
+Include: yum
+
+%post
+ yum -y install epel-release
+ yum -y install python36
+ 
+ pip3 install numpy
+ pip3 install pandas
+ pip3 install matplotlib
+ pip3 install pyfastx
+ pip3 install pyvcf
+ pip3 install seaborn 
+ pip3 install ipython
+
+ cd /usr/lib/
+ chmod 755 python3.6
+ chmod 755 python3.6/site-packages
+ cd /usr/lib/python3.6/site-packages/
+ find . -mount -type d -exec chmod 755 {} \;
+ find . -mount -type f -exec chmod 775 {} \;
+  
+ cd /usr/lib64/
+ chmod 755 python3.6
+ chmod 755 python3.6/site-packages
+ cd /usr/lib64/python3.6/site-packages/
+ find . -mount -type d -exec chmod 755 {} \;
+ find . -mount -type f -exec chmod 775 {} \;
+
+%runscript
+    exec python3 "$@"
