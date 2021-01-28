@@ -1,0 +1,20 @@
+title: singularity for bioinformatics
+repository: telatin/singularities
+lang: en
+description: "Singularity for Bioinformatics"
+
+readme_index:
+  with_frontmatter: true
+
+theme: null
+
+remote_theme: rundocs/jekyll-rtd-theme
+
+plugins:
+  - jekyll-remote-theme
+  - jemoji
+
+markdown: CommonMarkGhPages
+commonmark:
+  options: ['SMART']
+  extensions: ['table']
