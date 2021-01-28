@@ -4,9 +4,10 @@ sort: 2
 # DAS_Tool
 
 This is a template for `DAS_Tool`, that requires a specific version of Diamond.
-To be used with the [fill_template]({{ 'scripts/fill' | prepend: site.baseurl }}) tool.
+To be used with the
+[fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.
 
-```text
+```yaml
 Bootstrap: docker
 From: centos:centos7.6.1810
 
