@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 3
 permalink: /install
 ---
 # Install Singularity
@@ -19,7 +19,7 @@ In this repository we describe definition files that have been tested with
 **Singularity 2.4.2**. The oldest version that is documented in the offical
 website is 2.5, so also that version has been tested for some containers.
 
- 
+
 ## Installing Singularity 2.5
 
 :link: [documentation](https://sylabs.io/guides/2.5/user-guide/)
