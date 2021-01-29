@@ -1,7 +1,17 @@
+
+---
+sort: 5
+---
+# checkv
+
+ CheckV requires a database to be downloaded and the `$CHECKVDB` environmental variable set.
+
+To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.
+
+```yaml
 Bootstrap: docker
 From: centos:centos7.6.1810
 
-## CheckV requires a database to be downloaded and the `$CHECKVDB` environmental variable set.
 
 %environment
     source /opt/software/conda/bin/activate /opt/software/conda_env
@@ -28,3 +38,8 @@ From: centos:centos7.6.1810
 
 %runscript
     exec {binary} "$@"
+
+```
+
+This page has been automatically generated from a template file from the [repository](https://github.com/telatin/singularities).
+Please, report [issues](https://github.com/telatin/singularities/issues) if you think this template could or should be improved.

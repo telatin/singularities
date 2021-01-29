@@ -1,10 +1,20 @@
+
+---
+sort: 9
+---
+# qiime
+
+ Qiime2 requires the download of a conda environment file
+
+To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.
+
+```yaml
 BootStrap: yum
 OSVersion: 7
 MirrorURL: http://yum-repos.hpccluster/centos/7/os/x86_64/
 Include: yum
 UpdateURL: http://yum-repos.hpccluster/centos/7/updates/x86_64/
 
-## Qiime2 requires the download of a conda environment file
     
 %environment
   source /opt/software/conda/bin/activate /opt/software/conda_env
@@ -29,3 +39,8 @@ UpdateURL: http://yum-repos.hpccluster/centos/7/updates/x86_64/
 
 %runscript
   exec qiime "$@"
+
+```
+
+This page has been automatically generated from a template file from the [repository](https://github.com/telatin/singularities).
+Please, report [issues](https://github.com/telatin/singularities/issues) if you think this template could or should be improved.
