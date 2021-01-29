@@ -1,8 +1,9 @@
 ---
-sort: 10
+sort: 5
 ---
 # Basics
 
+ This is a definition file with multiple tools installed at once.
 
 To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.
 
@@ -14,17 +15,17 @@ From: centos:centos7.6.1810
 %environment
     source /opt/software/conda/bin/activate /opt/software/conda_env
 
- 
+
 %post
     yum -y install epel-release wget which nano curl zlib-devel
     yum -y groupinstall "Development Tools"
- 
+
     mkdir -p /opt/software
-     
+
     cd /opt/software
     curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     sh ./Miniconda3-latest-Linux-x86_64.sh -p /opt/software/conda -b
-      
+
     /opt/software/conda/bin/conda config --add channels defaults
     /opt/software/conda/bin/conda config --add channels conda-forge
     /opt/software/conda/bin/conda config --add channels bioconda
@@ -32,7 +33,6 @@ From: centos:centos7.6.1810
     source /opt/software/conda/bin/activate /opt/software/conda_env
 
     cd /opt/software
-
 
 ```
 

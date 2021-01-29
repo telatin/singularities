@@ -1,5 +1,5 @@
 ---
-sort: 4
+sort: 12
 ---
 # Multiqc
 

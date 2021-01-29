@@ -1,15 +1,17 @@
 ---
-sort: 8
+sort: 10
 ---
 # Eggnog-mapper
 
- eggnog mapper requires the same version of (diamond)[https://github.com/bbuchfink/diamond] used to build the database, and the download of its database via `download_eggnog_data.py`.
+ eggnog mapper requires the same version of (diamond)[https://github.com/bbuchfink/diamond]
+ used to build the database, and the download of its database via `download_eggnog_data.py`.
 
 To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.
 
 ```yaml
 Bootstrap: docker
 From: centos:centos7.6.1810
+
 
 %environment
     source /opt/software/conda/bin/activate /opt/software/conda_env

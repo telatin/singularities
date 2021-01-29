@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 6
 ---
 # Cat
 
@@ -10,6 +10,7 @@ To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: 
 ```yaml
 Bootstrap: docker
 From: centos:centos7.6.1810
+
 
 %environment
     source /opt/software/conda/bin/activate /opt/software/conda_env

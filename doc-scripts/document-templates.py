@@ -44,11 +44,16 @@ def dumpDefinition(deffile, outfile):
     inputfile.close()
 
     writer = open(outfile, 'wt', encoding='utf-8')
-    writer.write(temp_obj.substitute(progressive=basenumber, title=filebasename.capitalize(), description=header, yaml=yaml))
+    writer.write(temp_obj.substitute(
+        progressive=basenumber,
+        title=filebasename.capitalize(),
+        description=header,
+        yaml=yaml))
 
 
 # Parse all .tmp files in ../scripts/templates/
 for (dirpath, dirnames, filenames) in os.walk(templates):
+    filenames = sorted(filenames)
     for f in filenames:
         if re.search('.tmp', f):
             inputfile  = os.path.join(templates,f)
