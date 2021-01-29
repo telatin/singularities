@@ -1,8 +1,7 @@
-
 ---
 sort: 5
 ---
-# checkv
+# Checkv
 
  CheckV requires a database to be downloaded and the `$CHECKVDB` environmental variable set.
 

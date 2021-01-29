@@ -1,8 +1,7 @@
-
 ---
 sort: 4
 ---
-# multiqc
+# Multiqc
 
  MultiQC requires Python 3.7, so this has been added to the template.
 

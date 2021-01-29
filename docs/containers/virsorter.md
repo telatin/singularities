@@ -1,8 +1,7 @@
-
 ---
 sort: 12
 ---
-# virsorter
+# Virsorter
 
  Virsorter 2 can be built with the database in the image. In the tempalate I commented out those steps assuming the Database will be stored elsewhere.
 

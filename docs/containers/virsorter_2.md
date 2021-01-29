@@ -1,8 +1,7 @@
-
 ---
 sort: 15
 ---
-# virsorter_2
+# Virsorter_2
 
  This is an example of using mamba instead of conda for faster image generation.
 

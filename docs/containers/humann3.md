@@ -1,8 +1,7 @@
-
 ---
 sort: 7
 ---
-# humann3
+# Humann3
 
 
 To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.

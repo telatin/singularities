@@ -1,8 +1,7 @@
-
 ---
 sort: 2
 ---
-# cat
+# Cat
 
  The [cat](https://github.com/dutilh/CAT) tool requres a specific version of [diamond](https://github.com/bbuchfink/diamond) to work.
 

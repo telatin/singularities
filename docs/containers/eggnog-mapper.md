@@ -1,8 +1,7 @@
-
 ---
 sort: 8
 ---
-# eggnog-mapper
+# Eggnog-mapper
 
  eggnog mapper requires the same version of (diamond)[https://github.com/bbuchfink/diamond] used to build the database, and the download of its database via `download_eggnog_data.py`.
 

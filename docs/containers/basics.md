@@ -1,8 +1,7 @@
-
 ---
 sort: 10
 ---
-# basics
+# Basics
 
 
 To be used with the [fill_template]({{ '/scripts/fill-template.html' | prepend: site.baseurl }}) tool.

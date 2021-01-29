@@ -11,8 +11,7 @@ parentdir = os.path.realpath(os.path.join(scriptdir, os.pardir))
 templates = os.path.join(parentdir, 'scripts/templates')
 outputdir = os.path.join(parentdir, 'docs/containers')
 basenumber = 1
-template = """
----
+template = """---
 sort: $progressive
 ---
 # $title
@@ -45,7 +44,7 @@ def dumpDefinition(deffile, outfile):
     inputfile.close()
 
     writer = open(outfile, 'wt', encoding='utf-8')
-    writer.write(temp_obj.substitute(progressive=basenumber, title=filebasename, description=header, yaml=yaml))
+    writer.write(temp_obj.substitute(progressive=basenumber, title=filebasename.capitalize(), description=header, yaml=yaml))
 
 
 # Parse all .tmp files in ../scripts/templates/

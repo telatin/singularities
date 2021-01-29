@@ -1,8 +1,7 @@
-
 ---
 sort: 16
 ---
-# phanotate
+# Phanotate
 
  Phanotate is available via the custom `hcc` conda channel.
 

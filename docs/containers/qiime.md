@@ -1,8 +1,7 @@
-
 ---
 sort: 9
 ---
-# qiime
+# Qiime
 
  Qiime2 requires the download of a conda environment file
 
